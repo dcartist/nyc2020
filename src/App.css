@@ -1,14 +1,16 @@
-.App {
+/* .App {
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+} */
+#root {
+  min-height:100vh;
 }
-
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  /* .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -34,5 +36,71 @@
   }
   to {
     transform: rotate(360deg);
-  }
+  } */
+}
+
+.MenuButton{
+  height: 100vh;
+  z-index: 50;
+  background-color: grey;
+  width: 300px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+position: fixed;
+top:0;
+left: 0;
+}
+.MenuButton li a{
+  color: white;
+}
+
+.AppBase{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.MenuButton li {
+  padding-left: 0;
+
+  padding: 5px 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.NavigationBar{
+  background-color: #E0E1E2;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.NavigationDesktop li{
+  display: inline;
+  padding-right: 10px;
+
+}
+.NavigationDesktop li a{
+  color: black;
+}
+.HomeBase{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: row;
+  min-height: 95vh;
+  overflow: hidden;
+}
+
+.imageHeight{
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#BaseContainer{
+  flex-grow: 1;
+}
+
+.ContractorListing{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }

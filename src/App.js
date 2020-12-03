@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import axios from "axios"
+import Navigation from "./Component/Navigation/Navigation"
+import Contractor from "./Page/Contractor/Contractors"
+
+import {Route, Link, Switch, Redirect} from "react-router-dom";
+import React, { Component } from 'react';
+import Home from "./Page/Home/Home"
+import About from "./Page/About/About"
+import Contractors from "./Page/Contractor/Contractors"
+
+class App extends Component {
+  componentDidMount(){
+    // https://whispering-bayou-30290.herokuapp.com
+    axios.get("https://whispering-bayou-30290.herokuapp.com").then(console.log("loading Heroku"))
+  }
+  render() {
+    return (
+      <div className="AppBase">
+        <Navigation></Navigation>
+        <Route path="/" exact component={Home}/>
+      <Route path="/about" component={About}/>
+      <Route path="/contractors" exact component={Contractors}/>
+      </div>
+    );
+  }
 }
 
 export default App;

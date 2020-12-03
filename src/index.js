@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+const styles = {
+  main: {
+    display:'flex',
+    flexDirection:'column',
+    alignItems: 'center',
+    height: '100vh',
+  }
+}
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+  <Router style={styles.main}>
+  <App className="base"/>
+</Router>,
   document.getElementById('root')
 );
 
