@@ -69,7 +69,7 @@ class Jobs extends Component {
                     <li>{item.address} {item.city}</li>
                     <li>{item.borough}</li>
                     <li>{item.conLicense}</li>
-                    <li><Link to={"/contractor/"+item.conLicense}>ENTER</Link></li>
+                    <li><Link to={"/job/"+item.jobId}>More Details</Link></li>
                         </ul>
                     </div>))}
                 </div>
