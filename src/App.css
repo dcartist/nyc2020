@@ -108,3 +108,21 @@ left: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+.JobDetail{
+  padding: 25px 10px;
+  width: 75%;
+  margin: auto;
+  /* margin-top: 25px; */
+  /* background-color: rgb(94, 94, 94); */
+}
+.ContractorDetail{
+  padding: 25px 10px;
+  width: 75%;
+  margin: auto;
+  /* margin-top: 25px; */
+  /* background-color: rgb(94, 94, 94); */
+}
+
+/* .Map{
+  height: 300px;
+} */

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import { Header, Segment, Icon, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 class Contact_Detail extends Component {
     constructor(){
         super()
@@ -27,21 +29,45 @@ class Contact_Detail extends Component {
               }
           )
     }
+      
+    goBack = ()=>{
+        this.props.history.goBack();
+    }
     render() {
         if (this.state.contractor.length !== 0 && this.state.results.length !== 0){
             return (
                 <div>
-                    <h1>{this.state.contractor.conFirstName} {this.state.contractor.conLastName}</h1>
-                    <h3>{this.state.id}</h3>
-                    INFO
-            {this.state.results.map((item, index)=>(<div key={index}><ul>
-                <li>Job #{item.jobId} </li>
-                <li>{item.address} </li>
-                <li>{item.city}</li>
-                <li>{item.jobDescr}</li>
-            </ul>
+                    <Segment inverted color='grey'> <Icon name="backward" size="large"onClick={this.goBack}></Icon> 
+                        <Button onClick={this.goBack} color='grey'>Previous Page</Button></Segment>
+                    <div className="ContractorDetail">
+                    
+                        <Segment.Group raised>
+							<Header as="h3" attached="top" block>
+								Contractor
+							</Header>
+							<Segment attached color='blue'>
+								Name: {this.state.contractor.conFirstName.charAt(0).toUpperCase()+this.state.contractor.conFirstName.slice(1).toLowerCase()} {this.state.contractor.conLastName.charAt(0).toUpperCase()+this.state.contractor.conLastName.slice(1).toLowerCase()}
+							</Segment>
+							<Segment attached>ID: {this.state.id}</Segment>
+                            </Segment.Group>
+                    
+                            <Header as='h2'>Jobs:</Header>
+            {this.state.results.map((item, index)=>(<div key={index}>
+                
+                <Segment.Group raised>
+                            <Header as="h4" attached="top" block>
+								Job #{item.jobId}
+							</Header>
+							<Segment attached color='blue' raised>Address: {item.address}</Segment>
+							<Segment attached>City: {item.city}</Segment>
+							<Segment attached><Link to={'/job/' + item.jobId}>More Details</Link></Segment>
+							{/* <Segment attached>Property Description: {item.jobDescr}</Segment> */}
+                            </Segment.Group>
+                
                 </div>))}
                 </div>
+                </div>
+
             );
         } else{
             return (
