@@ -38,17 +38,17 @@ class Jobs extends Component {
     }
     byBorough =(boroughName) => {
         // console.log(boroughName)
-        if(boroughName == "CLEAR ALL"){
+        if(boroughName === "CLEAR ALL"){
             this.setState({results: this.state.jobs}) 
         } else {
-            let newFiltered = this.state.jobs.filter(item => item.borough == boroughName )
+            let newFiltered = this.state.jobs.filter(item => item.borough === boroughName )
             this.setState({results: newFiltered}) 
         }
             
     }
     searchByName = (event) => {
         event.preventDefault()
-        if (event.target.value.length == 0){
+        if (event.target.value.length === 0){
           this.setState({results: this.state.jobs})  
         } else{
             let newFiltered = this.state.jobs.filter(item => item.address.toLowerCase().includes(event.target.value.toLowerCase()) || item.conLicense.includes(event.target.value) ||  item.borough.toLowerCase().includes(event.target.value.toLowerCase()) )
