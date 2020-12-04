@@ -17,7 +17,8 @@ class Jobs extends Component {
             // console.log(results.data)
             let arrayUniqueByKey = [...new Map(results.data.map(item =>
                 [item["borough"], item])).values()];
-                console.log(arrayUniqueByKey)
+                // console.log(arrayUniqueByKey)
+                arrayUniqueByKey.push({borough: "CLEAR ALL"})
             // this.setState({jobs:results.data, results:results.data})
             this.setState({jobs:results.data, results:results.data, borough:arrayUniqueByKey})
         })
@@ -26,28 +27,31 @@ class Jobs extends Component {
     byName =(event) => {
         event.preventDefault()
         let changedArr = this.state.results.sort((a, b) => (a.conLastName > b.conLastName) ? 1 : -1)
-        this.setState({contractors: changedArr})
+        this.setState({jobs: changedArr})
 
     }
     byId =(event) => {
         event.preventDefault()
         let changedArr = this.state.results.sort((a, b) => (a.conLicense > b.conLicense) ? 1 : -1)
-        this.setState({contractors: changedArr})
+        this.setState({jobs: changedArr})
 
     }
     byBorough =(boroughName) => {
-        console.log(boroughName)
-        // event.preventDefault()
-        // let changedArr = this.state.results.sort((a, b) => (a.conLicense > b.conLicense) ? 1 : -1)
-        // this.setState({contractors: changedArr})
-
+        // console.log(boroughName)
+        if(boroughName == "CLEAR ALL"){
+            this.setState({results: this.state.jobs}) 
+        } else {
+            let newFiltered = this.state.jobs.filter(item => item.borough == boroughName )
+            this.setState({results: newFiltered}) 
+        }
+            
     }
     searchByName = (event) => {
         event.preventDefault()
         if (event.target.value.length == 0){
-          this.setState({results: this.state.contractors})  
+          this.setState({results: this.state.jobs})  
         } else{
-            let newFiltered = this.state.contractors.filter(item => item.address.toLowerCase().includes(event.target.value.toLowerCase()) || item.conLicense.includes(event.target.value) ||  item.borough.toLowerCase().includes(event.target.value.toLowerCase()) )
+            let newFiltered = this.state.jobs.filter(item => item.address.toLowerCase().includes(event.target.value.toLowerCase()) || item.conLicense.includes(event.target.value) ||  item.borough.toLowerCase().includes(event.target.value.toLowerCase()) )
             this.setState({results: newFiltered}) 
         }
     }
