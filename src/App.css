@@ -68,6 +68,10 @@ left: 0;
   text-decoration: none;
   list-style-type: none;
 }
+.boroughListing li {
+  display: inline;
+  padding-left: 10px;
+}
 
 .NavigationBar{
   background-color: #E0E1E2;

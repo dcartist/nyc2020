@@ -28,13 +28,16 @@ class Navigation extends Component {
             <li><Link to="/" >Home</Link></li>
             <li><Link to="/about">About</Link></li> 
             <li><Link to="/contractors" >Contractors</Link></li>
+            <li><Link to="/jobs" >Jobs</Link></li>
           </ul>
 
         <Transition visible={visible} animation='slide right' duration={500}>
         <section className="MenuButton">
           <ul>
-            <li><Link to="/about" onClick={this.toggleVisibility}>About</Link></li> 
             <li><Link to="/" onClick={this.toggleVisibility}>Home</Link></li>
+            <li><Link to="/about" onClick={this.toggleVisibility}>About</Link></li> 
+            <li><Link to="/contractors" onClick={this.toggleVisibility}>Contractors</Link></li> 
+            <li><Link to="/jobs" onClick={this.toggleVisibility}>Jobs</Link></li>
           <li><Button content={visible ? 'Hide' : 'Show'}
           onClick={this.toggleVisibility}>close</Button></li>
           </ul>
