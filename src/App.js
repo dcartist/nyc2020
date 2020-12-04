@@ -4,6 +4,7 @@ import axios from "axios"
 import Navigation from "./Component/Navigation/Navigation"
 import Contractor from "./Page/Contractor/Contractors"
 import ContractorInfo from "./Page/Contractor/Contact_Detail"
+import Job from "./Page/Job/Jobs"
 import {Route, Link, Switch, Redirect} from "react-router-dom";
 import React, { Component } from 'react';
 import Home from "./Page/Home/Home"
@@ -37,6 +38,7 @@ class App extends Component {
         <Route path="/" exact component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/contractors" exact component={Contractors}/>
+      <Route path="/jobs" exact component={Job}/>
       <Route path="/contractor/:id" render={(props)=> <ContractorInfo  setContractInfo={this.id} {...props} {...this.state}/>}/>
       </div>
     );
