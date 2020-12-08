@@ -72,20 +72,60 @@ left: 0;
   display: inline;
   padding-left: 10px;
 }
+.curserChange {
+  cursor:pointer;
+  color:black;
+}
 
+.Logo{
+  font-size: 15px;
+  font-weight: 800;
+  color: #1003a1;
+  padding-right: 20px;
+}
 .NavigationBar{
   background-color: #E0E1E2;
   display: flex;
+
   /* justify-content: center; */
   align-items: center;
   border-top: solid #1003a1 3px;
   /* border-top: solid #221d58 3px; */
   margin-bottom: 4px;
 }
+
+.NavigationDesktop a{
+  color: black;
+
+}
+.NavigationDesktop a:hover{
+  color: black;
+
+}
+.SearchBar input[type=text] {
+  background-color: #8698be4d !important;
+  /* color: white !important; */
+  border: 2px solid rgb(43, 43, 43);
+  /* border-radius: 4 */
+}
+
+/* .SearchBar input[type=text] {
+  transition: width 0.4s ease-in-out !important;
+}
+
+.SearchBar input[type=text]:focus {
+  width: 100% !important;
+} */
+
 .NavigationDesktop li{
   display: inline;
   padding-right: 10px;
 
+  vertical-align: middle;
+
+}
+..NavigationDesktop{
+  margin-top: 15px !important;
 }
 .NavigationDesktop li a{
   color: black;
@@ -163,4 +203,18 @@ left: 0;
 .HomeLeftSide h3{
   margin: 0;
   padding: 0;
+}
+
+.ListingSection{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ListingSection section{
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

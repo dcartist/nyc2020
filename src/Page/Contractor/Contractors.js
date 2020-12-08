@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import {Form} from "semantic-ui-react"
 import {Link} from "react-router-dom"
 class Contractors extends Component {
     constructor(){
@@ -44,10 +45,22 @@ class Contractors extends Component {
 
     render() {
         if (this.state.contractors.length !== 0){
-            return (<div>
+            return (<div className="ListingSection">
+                <section>
+                {/* <button onClick={this.byName}>Change to order</button>
+                <button onClick={this.byId}>Change to ID</button> */}
+                <Form>
+               <Form.Field className="SearchBar" >
+                   <lable>Search Contractor:</lable>
+                <input type="text" onChange={this.searchByName} placeholder="Enter Contractor Name or ID"></input>
+                </Form.Field>
+                </Form>
+                <div>
                 <button onClick={this.byName}>Change to order</button>
                 <button onClick={this.byId}>Change to ID</button>
-                <input type="text" onChange={this.searchByName}></input>
+                </div>
+                </section>
+              
                 <div className="ContractorListing">
                     {this.state.results.map(item=>(<div>
                         <ul>

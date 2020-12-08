@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Divider, Image, Transition } from 'semantic-ui-react'
+import { Button, Divider, Image, Transition, List } from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 import 'semantic-ui-css/semantic.min.css'
 import Modal from "../../Component/Modal/CreateContractor"
@@ -23,17 +23,15 @@ class Navigation extends Component {
           <rect width="100" height="10"></rect>
           <rect y="30" width="100" height="10"></rect>
           <rect y="60" width="100" height="10"></rect>
-        </svg></Button> NYC CONTRACTOR
-
-        <ul className="NavigationDesktop">
-            <li><Link to="/" >Home</Link></li>
-            <li><Link to="/about">About</Link></li> 
-            <li><Link to="/contractors" >Contractors</Link></li>
-            <li><Link to="/jobs" >Jobs</Link></li>
-            <li>
-                    <Modal></Modal></li>
-          </ul>
-
+        </svg></Button>  <img src={process.env.PUBLIC_URL + 'icons8-new-york-48.png'}/><span className="Logo">NYC CONTRACTING</span>
+        <List className="NavigationDesktop" bulleted horizontal>
+        <List.Item><List.Item></List.Item><Link to="/" >Home</Link></List.Item>
+        <List.Item><Link to="/about">About</Link></List.Item>
+        <List.Item><Link to="/contractors" >Contractors</Link></List.Item>
+        <List.Item><Link to="/jobs" >Jobs</Link></List.Item>
+        <Modal className="curserChange"></Modal>
+        </List>
+        
         <Transition visible={visible} animation='slide right' duration={500}>
         <section className="MenuButton">
           <ul>

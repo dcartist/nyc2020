@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Header, Icon, Modal, Form, Message } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal, Form, Message, List } from 'semantic-ui-react';
 import axios from 'axios';
 class CreateContractor extends Component {
 	constructor() {
@@ -55,7 +55,7 @@ class CreateContractor extends Component {
 				onOpen={() => this.setOpen(true)}
 				open={this.state.open}
 				size = 'tiny'
-				trigger={<Button>Create Contractor</Button>}
+				trigger={<List.Item className="curserChange">Create Contractor</List.Item>}
 			>
 				<Modal.Header>Create Contractor</Modal.Header>
 				<Modal.Content>
