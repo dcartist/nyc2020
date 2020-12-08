@@ -90,12 +90,14 @@ left: 0;
 .HomeBase{
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 2fr;
   grid-auto-flow: row;
-  min-height: 95vh;
+  /* min-height: 45vh; */
   overflow: hidden;
 }
-
+.HomeImage{
+  /* height: 60vh; */
+}
 .imageHeight{
   background-repeat: no-repeat;
   background-size: cover;
@@ -126,3 +128,7 @@ left: 0;
 /* .Map{
   height: 300px;
 } */
+
+.ContractorJobs{
+  padding-bottom: 20px;
+}

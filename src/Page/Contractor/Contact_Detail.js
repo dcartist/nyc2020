@@ -42,7 +42,7 @@ class Contact_Detail extends Component {
                     <div className="ContractorDetail">
                     
                         <Segment.Group raised>
-							<Header as="h3" attached="top" block>
+							<Header as="h2" attached="top" block>
 								Contractor
 							</Header>
 							<Segment attached color='blue'>
@@ -51,16 +51,16 @@ class Contact_Detail extends Component {
 							<Segment attached>ID: {this.state.id}</Segment>
                             </Segment.Group>
                     
-                            <Header as='h2'>Jobs:</Header>
-            {this.state.results.map((item, index)=>(<div key={index}>
+                            <Header as='h2' block>Jobs:</Header>
+            {this.state.results.map((item, index)=>(<div key={index} className="ContractorJobs">
                 
-                <Segment.Group raised>
+                <Segment.Group raised >
                             <Header as="h4" attached="top" block>
 								Job #{item.jobId}
 							</Header>
 							<Segment attached color='blue' raised>Address: {item.address}</Segment>
 							<Segment attached>City: {item.city}</Segment>
-							<Segment attached><Link to={'/job/' + item.jobId}>More Details</Link></Segment>
+							<Segment attached><Link to={'/job/' + item.jobId}><Button fluid color='grey'>More Info</Button></Link></Segment>
 							{/* <Segment attached>Property Description: {item.jobDescr}</Segment> */}
                             </Segment.Group>
                 

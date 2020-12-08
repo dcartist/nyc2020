@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Divider, Image, Transition } from 'semantic-ui-react'
 import {Link} from "react-router-dom"
 import 'semantic-ui-css/semantic.min.css'
+import Modal from "../../Component/Modal/CreateContractor"
 
 class Navigation extends Component {
   state = { visible: false }
@@ -29,6 +30,8 @@ class Navigation extends Component {
             <li><Link to="/about">About</Link></li> 
             <li><Link to="/contractors" >Contractors</Link></li>
             <li><Link to="/jobs" >Jobs</Link></li>
+            <li>
+                    <Modal></Modal></li>
           </ul>
 
         <Transition visible={visible} animation='slide right' duration={500}>
