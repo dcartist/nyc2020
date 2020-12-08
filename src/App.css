@@ -78,6 +78,9 @@ left: 0;
   display: flex;
   /* justify-content: center; */
   align-items: center;
+  border-top: solid #1003a1 3px;
+  /* border-top: solid #221d58 3px; */
+  margin-bottom: 4px;
 }
 .NavigationDesktop li{
   display: inline;
@@ -92,7 +95,7 @@ left: 0;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-auto-flow: row;
-  /* min-height: 45vh; */
+  min-height: 70vh;
   overflow: hidden;
 }
 .HomeImage{
@@ -131,4 +134,33 @@ left: 0;
 
 .ContractorJobs{
   padding-bottom: 20px;
+}
+
+.HomeLeftSide{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.HomeLeftSide p {
+  width: 90%;
+}
+.HomeLeftSide hr {
+  width: 40%;
+  height: 1px;
+  background-color: #1003a1;
+}
+
+.HomeLeftSide h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+  color: #1003a1;
+}
+
+.HomeLeftSide h3{
+  margin: 0;
+  padding: 0;
 }
