@@ -36,6 +36,7 @@ class Home extends Component {
                     </div>
                     
                 </section>
+                <section className="HomeFullNoShadow"></section>
                 <div className="ShadowsFull">
                     
                 <section className="HomeLeftHalf" style={JobsdivBackground}>
@@ -47,6 +48,7 @@ class Home extends Component {
                        </Link>
                        </div>
                </section>
+                <section className="HomeFullNoShadow"></section>
                 </div>
              
             </div>
