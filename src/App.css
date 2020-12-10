@@ -92,10 +92,8 @@
 .NavigationBar {
   background-color: #E0E1E2;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   border-top: solid #1003a1 3px;
-  /* border-top: solid #221d58 3px; */
   margin-bottom: 4px;
 }
 
@@ -109,18 +107,9 @@
 
 .SearchBar input[type=text] {
   background-color: #8698be4d !important;
-  /* color: white !important; */
   border: 2px solid rgb(43, 43, 43);
-  /* border-radius: 4 */
 }
 
-/* .SearchBar input[type=text] {
-  transition: width 0.4s ease-in-out !important;
-}
-
-.SearchBar input[type=text]:focus {
-  width: 100% !important;
-} */
 
 .NavigationDesktop li {
   display: inline;
@@ -195,7 +184,7 @@ box-shadow: inset 0px 12px 30px -4px rgba(0,0,0,1)
 
 .HomeLeftHalf{
   grid-column: 1 / span 3;
-  height: 750px;
+  height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
