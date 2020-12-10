@@ -6,9 +6,11 @@
   height: 40vmin;
   pointer-events: none;
 } */
+
 #root {
-  min-height:100vh;
+  min-height: 100vh;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   /* .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -39,7 +41,7 @@
   } */
 }
 
-.MenuButton{
+.MenuButton {
   height: 100vh;
   z-index: 50;
   background-color: grey;
@@ -48,45 +50,48 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-position: fixed;
-top:0;
-left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
-.MenuButton li a{
+
+.MenuButton li a {
   color: white;
 }
 
-.AppBase{
+.AppBase {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
 .MenuButton li {
   padding-left: 0;
-
   padding: 5px 0;
   text-decoration: none;
   list-style-type: none;
 }
+
 .boroughListing li {
   display: inline;
   padding-left: 10px;
 }
+
 .curserChange {
-  cursor:pointer;
-  color:black;
+  cursor: pointer;
+  color: black;
 }
 
-.Logo{
+.Logo {
   font-size: 15px;
   font-weight: 800;
   color: #1003a1;
   padding-right: 20px;
 }
-.NavigationBar{
+
+.NavigationBar {
   background-color: #E0E1E2;
   display: flex;
-
   /* justify-content: center; */
   align-items: center;
   border-top: solid #1003a1 3px;
@@ -94,14 +99,14 @@ left: 0;
   margin-bottom: 4px;
 }
 
-.NavigationDesktop a{
+.NavigationDesktop a {
   color: black;
-
 }
-.NavigationDesktop a:hover{
+
+.NavigationDesktop a:hover {
   color: black;
-
 }
+
 .SearchBar input[type=text] {
   background-color: #8698be4d !important;
   /* color: white !important; */
@@ -117,50 +122,126 @@ left: 0;
   width: 100% !important;
 } */
 
-.NavigationDesktop li{
+.NavigationDesktop li {
   display: inline;
   padding-right: 10px;
-
   vertical-align: middle;
+}
 
+.NavigationDesktop {
+  margin-top: 5px !important;
 }
-..NavigationDesktop{
-  margin-top: 15px !important;
-}
-.NavigationDesktop li a{
+
+.NavigationDesktop li a {
   color: black;
 }
-.HomeBase{
+
+.HomeBase {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-auto-flow: row;
-  min-height: 70vh;
+  grid-template-columns: repeat(4 1fr);
+  /* grid-auto-flow: column; */
+  /* min-height: 70vh; */
   overflow: hidden;
 }
-.HomeImage{
+
+.HomeFull {
+  /* grid-column: col / span 3; */
+  /* background-color: #1003a1; */
+  grid-column: 1 / span 4;
+  height: 750px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: inset 0px 12px 30px -4px rgba(0,0,0,1);
+-moz-box-shadow: inset 0px 12px 30px -4px rgba(0,0,0,1);
+box-shadow: inset 0px 12px 30px -4px rgba(0,0,0,1)
+}
+
+.HomeContractor {
+  background-color: #000000de;
+  width: 70%;
+  text-align: center;
+  padding: 40px;
+  color: white;
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.HomeFullNoParallax {
+  grid-column: 1 / span 4;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.HomeLeftHalf{
+  grid-column: 1 / span 3;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  background-position: center;
+  /* background-color: #1003a1; */
+
+}
+.ShadowsFull{
+  /* width: 100%; */
+  /* display: grid; */
+  /* grid-template-columns: repeat(4 1fr); */
+  grid-column: 1 / span 4;
+  box-shadow: 0px -8px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px -8px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -8px 5px 0px rgba(0,0,0,0.75);
+}
+.HomeRightHalf{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* grid-column: 2 / span 1; */
+}
+.HomeImage {
   /* height: 60vh; */
 }
-.imageHeight{
+
+.imageHeight {
   background-repeat: no-repeat;
   background-size: cover;
 }
-#BaseContainer{
+
+#BaseContainer {
   flex-grow: 1;
 }
 
-.ContractorListing{
+.ContractorListing {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
-.JobDetail{
+
+.JobDetail {
   padding: 25px 10px;
   width: 75%;
   margin: auto;
   /* margin-top: 25px; */
   /* background-color: rgb(94, 94, 94); */
 }
-.ContractorDetail{
+
+.ContractorDetail {
   padding: 25px 10px;
   width: 75%;
   margin: auto;
@@ -172,21 +253,31 @@ left: 0;
   height: 300px;
 } */
 
-.ContractorJobs{
+.ContractorJobs {
   padding-bottom: 20px;
 }
-
-.HomeLeftSide{
-  display: flex;
+.HomeRightSide{
+  grid-column: 2 / span 3;
+  /* padding: 30px 0; */
+  height: 80vh;
+}
+.HomeLeftSide {
+  /* display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; */
   text-align: center;
+  height: 90vh;
+  -webkit-box-shadow: -2px 17px 17px -14px rgba(0,0,0,0.93);
+  -moz-box-shadow: -2px 17px 17px -14px rgba(0,0,0,0.93);
+  box-shadow: -2px 17px 17px -14px rgba(0,0,0,0.93);
+  /* grid-column: 1 / span 3; */
 }
 
 .HomeLeftSide p {
   width: 90%;
 }
+
 .HomeLeftSide hr {
   width: 40%;
   height: 1px;
@@ -195,23 +286,23 @@ left: 0;
 
 .HomeLeftSide h1 {
   font-size: 2.5rem;
-  margin: 0;
+  /* margin: 0; */
   padding: 0;
   color: #1003a1;
 }
 
-.HomeLeftSide h3{
+.HomeLeftSide h3 {
   margin: 0;
   padding: 0;
 }
 
-.ListingSection{
+.ListingSection {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.ListingSection section{
+.ListingSection section {
   width: 60%;
   margin: auto;
   display: flex;
