@@ -25,12 +25,11 @@ class Home extends Component {
                 {/* <section className="HomeRightSide">
                     <img src={Animated} width="96%" height="auto" alt="Animated SVG of contruction"/>
                 </section> */}
-                <div>
-                    
-                </div>
+                <section className="HomeFullNoShadow"></section>
                 <section className="HomeFull" style={divBackground}>
                     <div className="HomeContractor">
                         <h2>Search Contractors</h2>
+                        <hr></hr>
                         <p> Search through more than 500 contractors who have filed construction job applications submitted through the New York Borough Offices.</p>
                         <Link to="/Contractors"><button>Click here</button></Link>
                     </div>
@@ -42,6 +41,7 @@ class Home extends Component {
                 <section className="HomeLeftHalf" style={JobsdivBackground}>
                 <div className="HomeContractor">
                 <h2>Search Jobs</h2>
+                <hr></hr>
                 <p>View the job applications that were submitted through the the New York Borough Offices.</p>
                        <Link to="/jobs">
                        <button>Click here</button>
