@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
-import {Form} from "semantic-ui-react"
+import {Form, Segment} from "semantic-ui-react"
 import {Link} from "react-router-dom"
 class Contractors extends Component {
     constructor(){
@@ -38,7 +38,7 @@ class Contractors extends Component {
         if (event.target.value.length == 0){
           this.setState({results: this.state.contractors})  
         } else{
-            let newFiltered = this.state.contractors.filter(item => item.conLastName.toLowerCase().includes(event.target.value.toLowerCase()) || item.conLicense.includes(event.target.value))
+            let newFiltered = this.state.contractors.filter(item => item.conFirstName.toLowerCase().includes(event.target.value.toLowerCase()) || item.conLastName.toLowerCase().includes(event.target.value.toLowerCase()) || item.conLicense.includes(event.target.value))
             this.setState({results: newFiltered}) 
         }
     }
@@ -62,13 +62,20 @@ class Contractors extends Component {
                 </section>
               
                 <div className="ContractorListing">
-                    {this.state.results.map(item=>(<div>
+                    {this.state.results.map(item=>(<Segment>
+                        <ul>
+                    <li className="ContractorListingName">{item.conFirstName} {item.conLastName}</li>
+                    <li>ID: {item.conLicense}</li>
+                    <li><Link to={"/contractor/"+item.conLicense}>More info</Link></li>
+                        </ul>
+                        </Segment>))}
+                    {/* {this.state.results.map(item=>(<div>
                         <ul>
                     <li>{item.conFirstName} {item.conLastName}</li>
                     <li>{item.conLicense}</li>
                     <li><Link to={"/contractor/"+item.conLicense}>ENTER</Link></li>
                         </ul>
-                    </div>))}
+                    </div>))} */}
                 </div>
                 </div>
             );

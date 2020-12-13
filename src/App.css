@@ -90,13 +90,16 @@
 }
 
 .NavigationBar {
+  /* background-color: #b6b6b6; */
   background-color: #E0E1E2;
   display: flex;
   align-items: center;
-  border-top: solid #1003a1 3px;
-  margin-bottom: 4px;
+  border-top: solid #808080 3px;
+  padding-bottom: 4px;
 }
-
+.NavigationBar img {
+  vertical-align: middle;
+}
 .NavigationDesktop a {
   color: black;
 }
@@ -117,7 +120,7 @@
 }
 
 .NavigationDesktop {
-  margin-top: 5px !important;
+  margin-top: 1px !important;
 }
 
 .NavigationDesktop li a {
@@ -179,8 +182,9 @@
 
 .HomeFullNoShadow {
   grid-column: 1 / span 4;
-  height: 200px;
-  background-color: #37363d;
+  height: 80px;
+  background-color: #4d4d4d;
+  /* background-color: #37363d; */
   -webkit-box-shadow: inset 0px 12px 30px -4px rgba(0, 0, 0, 1);
   -moz-box-shadow: inset 0px 12px 30px -4px rgba(0, 0, 0, 1);
   box-shadow: inset 0px 12px 30px -4px rgba(0, 0, 0, 1)
@@ -201,7 +205,7 @@
 
 .HomeFullNoParallax {
   grid-column: 1 / span 4;
-  height: 750px;
+  height: 650px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,7 +259,24 @@
 
 .ContractorListing {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 10px;
+  width: 90%;
+  margin: auto;
+
+}
+
+ .ContractorListing .ui.segment{
+  margin-top: 14px !important;
+}
+
+
+.ContractorListing li{
+  list-style-type: none;
+
+}
+.ContractorListingName {
+  font-weight: bold;
 }
 
 .JobDetail {

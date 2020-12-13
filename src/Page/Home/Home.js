@@ -15,20 +15,20 @@ class Home extends Component {
         }
         return (
             <div className="HomeBase">
-                <section className="HomeFullNoParallax HomeLeftSide">
+                {/* <section className="HomeFullNoParallax HomeLeftSide">
                     <h1>New York City</h1>
                     <h3>Contractor and Jobs Listings</h3>
                     <hr></hr>
                     <p>Construction job applications submitted through the Borough Offices, through eFiling, or through the HUB from 2000 to 2019.</p>
                     <img src={Animated} width="75%" height="auto" alt="Animated SVG of contruction"/>
-                </section>
+                </section> */}
                 {/* <section className="HomeRightSide">
                     <img src={Animated} width="96%" height="auto" alt="Animated SVG of contruction"/>
                 </section> */}
-                <section className="HomeFullNoShadow"></section>
+                {/* <section className="HomeFullNoShadow"></section> */}
                 <section className="HomeFull" style={divBackground}>
                     <div className="HomeContractor">
-                        <h2>Search Contractors</h2>
+                        <h2>View Contractor Listing</h2>
                         <hr></hr>
                         <p> Search through more than 500 contractors who have filed construction job applications submitted through the New York Borough Offices.</p>
                         <Link to="/Contractors"><button>Click here</button></Link>
@@ -40,7 +40,7 @@ class Home extends Component {
                     
                 <section className="HomeLeftHalf" style={JobsdivBackground}>
                 <div className="HomeContractor">
-                <h2>Search Jobs</h2>
+                <h2>View Job Listing</h2>
                 <hr></hr>
                 <p>View the job applications that were submitted through the the New York Borough Offices.</p>
                        <Link to="/jobs">

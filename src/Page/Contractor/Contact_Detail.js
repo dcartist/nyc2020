@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios"
+import Modal from "../../Component/Modal/UpdateContractor"
 import { Header, Segment, Icon, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 class Contact_Detail extends Component {
-    constructor(){
+    constructor(props){
         super()
         this.state={
             id: "",
@@ -28,6 +29,7 @@ class Contact_Detail extends Component {
                   this.setState({contractor: results.data[0]})
               }
           )
+     
     }
       
     goBack = ()=>{
@@ -49,6 +51,8 @@ class Contact_Detail extends Component {
 								Name: {this.state.contractor.conFirstName.charAt(0).toUpperCase()+this.state.contractor.conFirstName.slice(1).toLowerCase()} {this.state.contractor.conLastName.charAt(0).toUpperCase()+this.state.contractor.conLastName.slice(1).toLowerCase()}
 							</Segment>
 							<Segment attached>ID: {this.state.id}</Segment>
+							<Segment attached><Modal {...this.state.contractor}></Modal></Segment>
+							{/* <Segment attached><Modal {...this.state.contractor}></Modal></Segment> */}
                             </Segment.Group>
                     
                             <Header as='h2' block>Jobs:</Header>
@@ -61,7 +65,6 @@ class Contact_Detail extends Component {
 							<Segment attached color='blue' raised>Address: {item.address}</Segment>
 							<Segment attached>City: {item.city}</Segment>
 							<Segment attached><Link to={'/job/' + item.jobId}><Button fluid color='grey'>More Info</Button></Link></Segment>
-							{/* <Segment attached>Property Description: {item.jobDescr}</Segment> */}
                             </Segment.Group>
                 
                 </div>))}
@@ -69,6 +72,32 @@ class Contact_Detail extends Component {
                 </div>
 
             );
+        } else if(this.state.contractor.length !== 0 && this.state.results.length === 0) {
+            return (
+                <div>
+                    <Segment inverted color='grey'> <Icon name="backward" size="large"onClick={this.goBack}></Icon> 
+                        <Button onClick={this.goBack} color='grey'>Previous Page</Button></Segment>
+                    <div className="ContractorDetail">
+                    
+                        <Segment.Group raised>
+							<Header as="h2" attached="top" block>
+								Contractor
+							</Header>
+							<Segment attached color='blue'>
+								Name: {this.state.contractor.conFirstName.charAt(0).toUpperCase()+this.state.contractor.conFirstName.slice(1).toLowerCase()} {this.state.contractor.conLastName.charAt(0).toUpperCase()+this.state.contractor.conLastName.slice(1).toLowerCase()}
+							</Segment>
+							<Segment attached>ID: {this.state.id}</Segment>
+							<Segment attached><Modal {...this.state.contractor}></Modal></Segment>
+                            </Segment.Group>
+                    
+                            <Header as='h2' block>Jobs:</Header>
+                            {this.state.results.length == 0 ? 'Sorry there are no jobs linked to this contractor' : 'there is a listing'}
+            
+                </div>
+                </div>
+
+            );
+        
         } else{
             return (
                 <div>

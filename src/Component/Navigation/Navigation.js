@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Divider, Image, Transition, List } from 'semantic-ui-react'
+import Logo from "./icons8-new-york-48.png"
 import {Link} from "react-router-dom"
 import 'semantic-ui-css/semantic.min.css'
 import Modal from "../../Component/Modal/CreateContractor"
@@ -23,7 +24,9 @@ class Navigation extends Component {
           <rect width="100" height="10"></rect>
           <rect y="30" width="100" height="10"></rect>
           <rect y="60" width="100" height="10"></rect>
-        </svg></Button>  <img src={process.env.PUBLIC_URL + 'icons8-new-york-48.png'}/><span className="Logo">NYC CONTRACTING</span>
+        </svg></Button>  
+        <Link to="/" ><img src={Logo}/><span className="Logo">NYC CONTRACTING</span></Link>
+        
         <List className="NavigationDesktop" bulleted horizontal>
         <List.Item><List.Item></List.Item><Link to="/" >Home</Link></List.Item>
         <List.Item><Link to="/about">About</Link></List.Item>
