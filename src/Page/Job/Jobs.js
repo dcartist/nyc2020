@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {Dimmer, Loader, Segment, Button, Input} from "semantic-ui-react"
 
 class Jobs extends Component {
 	constructor() {
@@ -14,11 +15,8 @@ class Jobs extends Component {
 	componentDidMount() {
 		const url = `https://whispering-bayou-30290.herokuapp.com/api/property`;
 		axios.get(url).then((results) => {
-			// console.log(results.data)
 			let arrayUniqueByKey = [...new Map(results.data.map((item) => [item['borough'], item])).values()];
-			// console.log(arrayUniqueByKey)
 			arrayUniqueByKey.push({ borough: 'CLEAR ALL' });
-			// this.setState({jobs:results.data, results:results.data})
 			this.setState({ jobs: results.data, results: results.data, borough: arrayUniqueByKey });
 		});
 	}
@@ -59,17 +57,23 @@ class Jobs extends Component {
 	render() {
 		if (this.state.jobs.length !== 0) {
 			return (
-				<div>
-					<button onClick={this.byName}>Change to order</button>
-					<button onClick={this.byId}>Change to ID</button>
+				<div><div className="ListingSection">
+						<Input type="text" onChange={this.searchByName} icon='search' placeholder='Search...' size='large' className="JobSearchInput" />
+  <ul className="boroughListing">
+	  {/* <li><Button onClick={this.byName}>Sort by Contractor Last Name</Button></li> */}
+	  <li><Button onClick={this.byId}>Sort by ID</Button></li>
+  </ul>
+
 					<ul className="boroughListing">
+						<li>Sort by Borough:</li>
 						{this.state.borough.map((item, index) => (
 							<li key={index}>
-								<button onClick={() => this.byBorough(item.borough)}>{item.borough}</button>
+								<Button onClick={() => this.byBorough(item.borough)}>{item.borough}</Button>
 							</li>
 						))}
 					</ul>
-					<input type="text" onChange={this.searchByName} />
+				
+					</div>
 					<div className="ContractorListing">
 						{this.state.results.map((item, index) => (
 							<div key={index}>
@@ -78,7 +82,8 @@ class Jobs extends Component {
 										{item.address} {item.city}
 									</li>
 									<li>{item.borough}</li>
-									<li>{item.conLicense}</li>
+									<li>License# {item.conLicense}</li>
+									{/* <li>{item.conLicense}</li> */}
 									<li>
 										<Link to={'/job/' + item.jobId}>More Details</Link>
 									</li>
@@ -89,7 +94,9 @@ class Jobs extends Component {
 				</div>
 			);
 		} else {
-			return <div>Not Loaded</div>;
+			return  <Dimmer active inverted>
+			<Loader  size='big' inverted>Loading</Loader>
+		  </Dimmer>;
 		}
 	}
 }

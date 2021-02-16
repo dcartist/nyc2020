@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios"
 import Modal from "../../Component/Modal/UpdateContractor"
-import { Header, Segment, Icon, Button } from 'semantic-ui-react';
+import { Dimmer, Loader, Header, Segment, Icon, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 class Contact_Detail extends Component {
     constructor(props){
@@ -101,7 +101,9 @@ class Contact_Detail extends Component {
         } else{
             return (
                 <div>
-                  
+                   <Dimmer active inverted>
+      <Loader size='big' inverted>Loading</Loader>
+    </Dimmer>
                     
                 </div>
             );

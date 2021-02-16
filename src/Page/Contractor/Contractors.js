@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios"
-import {Form, Segment} from "semantic-ui-react"
+import {Dimmer, Loader, Form, Segment, Input, Button} from "semantic-ui-react"
 import {Link} from "react-router-dom"
 class Contractors extends Component {
     constructor(){
@@ -47,17 +47,15 @@ class Contractors extends Component {
         if (this.state.contractors.length !== 0){
             return (<div className="ListingSection">
                 <section>
-                {/* <button onClick={this.byName}>Change to order</button>
-                <button onClick={this.byId}>Change to ID</button> */}
                 <Form>
                <Form.Field className="SearchBar" >
                    <lable>Search Contractor:</lable>
-                <input type="text" onChange={this.searchByName} placeholder="Enter Contractor Name or ID"></input>
+                   <Input type="text" onChange={this.searchByName} icon='search' placeholder='Enter Contractor Name or ID' size='large' className="JobSearchInput" />
                 </Form.Field>
                 </Form>
                 <div>
-                <button onClick={this.byName}>Change to order</button>
-                <button onClick={this.byId}>Change to ID</button>
+                <Button onClick={this.byName}>Change to order</Button>
+                <Button onClick={this.byId}>Change to ID</Button>
                 </div>
                 </section>
               
@@ -69,21 +67,16 @@ class Contractors extends Component {
                     <li><Link to={"/contractor/"+item.conLicense}>More info</Link></li>
                         </ul>
                         </Segment>))}
-                    {/* {this.state.results.map(item=>(<div>
-                        <ul>
-                    <li>{item.conFirstName} {item.conLastName}</li>
-                    <li>{item.conLicense}</li>
-                    <li><Link to={"/contractor/"+item.conLicense}>ENTER</Link></li>
-                        </ul>
-                    </div>))} */}
+                
                 </div>
                 </div>
             );
         }else {
             return (
-                <div>
-                    Not Loaded
-                </div>
+                <Dimmer active inverted>
+      <Loader size='big' inverted>Loading</Loader>
+    </Dimmer>
+                    
             );
         }
        

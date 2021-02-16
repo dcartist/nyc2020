@@ -72,6 +72,10 @@
   list-style-type: none;
 }
 
+.boroughListing {
+  margin: auto;
+  margin-bottom: 10px;
+}
 .boroughListing li {
   display: inline;
   padding-left: 10px;
@@ -108,10 +112,10 @@
   color: black;
 }
 
-.SearchBar input[type=text] {
+/* .SearchBar input[type=text] {
   background-color: #8698be4d !important;
   border: 2px solid rgb(43, 43, 43);
-}
+} */
 
 .NavigationDesktop li {
   display: inline;
@@ -356,4 +360,12 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.JobSearchInput{
+  width: 50vw;
+  margin: auto;
+  border: #aaaaaa solid 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
 }

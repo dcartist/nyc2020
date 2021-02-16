@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Map from '../../Component/Map/Map';
-import { Header, Segment, Icon, Button } from 'semantic-ui-react';
+import { Dimmer, Loader, Header, Segment, Icon, Button } from 'semantic-ui-react';
 class Job_Detail extends Component {
 	constructor() {
 		super();
@@ -65,7 +65,9 @@ class Job_Detail extends Component {
 				</div>
 			);
 		} else {
-			return <div />;
+			return <Dimmer active inverted>
+			<Loader size='big' inverted>Loading</Loader>
+		  </Dimmer>;
 		}
 	}
 }
