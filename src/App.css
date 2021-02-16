@@ -71,7 +71,10 @@
   text-decoration: none;
   list-style-type: none;
 }
-
+.AboutSection{
+  margin: auto;
+  width: 75vw;
+}
 .boroughListing {
   margin: auto;
   margin-bottom: 10px;
