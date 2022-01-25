@@ -106,11 +106,14 @@
 }
 .NavigationBar img {
   vertical-align: middle;
+  margin-left: 10px;
 }
 .NavigationDesktop a {
   color: black;
 }
-
+.NavigationMobile{
+  display: none !important;
+}
 .NavigationDesktop a:hover {
   color: black;
 }
@@ -265,14 +268,18 @@
 }
 
 .ContractorListing {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-columns: repeat(5, 1fr); */
   column-gap: 10px;
   width: 90%;
   margin: auto;
 
 }
-
+.JobListing{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
  .ContractorListing .ui.segment{
   margin-top: 14px !important;
 }
@@ -280,6 +287,7 @@
 
 .ContractorListing li{
   list-style-type: none;
+  min-width: 160px;
 
 }
 .ContractorListingName {
@@ -372,3 +380,27 @@
   margin-bottom: 5px;
   
 }
+
+
+@media only screen and (max-width: 600px) {
+  
+  .NavigationDesktop{
+    display: none !important;
+
+  }
+  .NavigationMobile{
+    display: block !important;
+  }
+
+  .JobListing{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {  
+  .JobListing{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}}

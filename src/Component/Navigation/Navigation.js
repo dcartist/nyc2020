@@ -19,12 +19,12 @@ class Navigation extends Component {
     const { visible } = this.state
     return (
       <div className="NavigationBar">
-        <Button content={visible ? 'Hide' : 'Show'}
+        <Button content={visible ? 'Hide' : 'Show'} className="NavigationMobile" 
           onClick={this.toggleVisibility}><svg viewBox="0 0 100 80" width="40" height="20">
           <rect width="100" height="10"></rect>
           <rect y="30" width="100" height="10"></rect>
           <rect y="60" width="100" height="10"></rect>
-        </svg></Button>  
+        </svg> </Button>  
         <Link to="/" ><img src={Logo}/><span className="Logo">NYC CONTRACTING</span></Link>
         
         <List className="NavigationDesktop" bulleted horizontal>

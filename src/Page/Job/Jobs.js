@@ -74,7 +74,7 @@ class Jobs extends Component {
 					</ul>
 				
 					</div>
-					<div className="ContractorListing">
+					<div className="JobListing">
 						{this.state.results.map((item, index) => (
 							<div key={index}>
 								<ul>
