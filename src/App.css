@@ -280,12 +280,12 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
- .ContractorListing .ui.segment{
+.JobListing .ui.segment, .ContractorListing .ui.segment{
   margin-top: 14px !important;
 }
 
 
-.ContractorListing li{
+.JobListing li,.ContractorListing li{
   list-style-type: none;
   min-width: 160px;
 
