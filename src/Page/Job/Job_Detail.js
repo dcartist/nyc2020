@@ -1,76 +1,103 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
-import Map from '../../Component/Map/Map';
+import { useParams, useHistory } from 'react-router-dom';
 import { Dimmer, Loader, Header, Segment, Icon, Button } from 'semantic-ui-react';
-class Job_Detail extends Component {
-	constructor() {
-		super();
-		this.state = {
-			job: [],
-			results: [],
-		};
-	}
-	componentDidMount() {
-		
-		const url = `https://whispering-bayou-30290.herokuapp.com/api/job/id/` + this.props.match.params.jobId;
-		axios.get(url).then((results) => {
-			this.setState({ results: results.data });
-			console.log(results.data);
-		});
-    }
-    
-    goBack = ()=>{
-        this.props.history.goBack();
-    }
-	render() {
-		if (this.state.results.length !== 0 && this.state.results[0].contractor && this.state.results[0].owner && this.state.results[0].property) {
-			return (
-				<div>
-                    <Segment inverted color='grey'> <Icon name="backward" size="large"onClick={this.goBack}></Icon> 
-                        <Button onClick={this.goBack} color='grey'>Previous Page</Button></Segment>
 
-					{ this.state.results.length !== 0 && this.state.results.map((item, index) => (
-						<div key={index} className="JobDetail">
+const Job_Detail = () => {
+  const { jobId } = useParams();
+  const history = useHistory();
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-                            <Segment.Group raised>
-							<Header as="h3" attached="top" block>
-								Contractor
-							</Header>
-							<Segment attached color='blue'>
-								Name: {item.contractor.conFirstName ?? item.contractor.conFirstName.charAt(0).toUpperCase()+item.contractor.conFirstName.slice(1).toLowerCase()} {item.contractor.conLastName.charAt(0).toUpperCase()+item.contractor.conLastName.slice(1).toLowerCase() || 'n/a'}
-							</Segment>
-							<Segment attached>ID: {item.contractor.conLicense}</Segment>
-                            </Segment.Group>
-                            <Segment.Group raised>
-                            <Header as="h3" attached="top" block>
-								Owner
-							</Header>
-							<Segment attached color='blue'>Owner Name: {item.owner.ownFirstName} {item.owner.ownLastName}</Segment>
-							<Segment attached >Business Name: {item.owner.ownBusinessName}</Segment>
-							<Segment attached>Owner Type: {item.owner.ownType}</Segment>
-                            </Segment.Group>
-                            <Segment.Group raised>
-                            <Header as="h3" attached="top" block>
-								Property
-							</Header>
-							<Segment attached color='blue' raised>Address: {item.property.address}</Segment>
-							<Segment attached>City: {item.property.city}</Segment>
-							<Segment attached>Borough: {item.property.borough}</Segment>
-							<Segment attached>Property Type: {item.property.propType}</Segment>
-							<Segment attached>Property Description: {item.property.jobDescr}</Segment>
-                            {/* <Segment><Map newLocation={item.property.address} className="Map" /></Segment> */}
-                            </Segment.Group>
-							
-						</div>
-					))}
-				</div>
-			);
-		} else {
-			return <Dimmer active inverted>
-			<Loader size='big' inverted>Loading</Loader>
-		  </Dimmer>;
-		}
-	}
-}
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const url = `http://localhost:8080/api/job/id/${jobId}`;
+        const res = await axios.get(url);
+        if (cancelled) return;
+        const data = res?.data;
+        const list = Array.isArray(data) ? data : (data ? [data] : []);
+        setResults(list);
+      } catch (err) {
+        if (!cancelled) {
+          console.error(err);
+          setResults([]);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+
+    fetchData();
+    return () => { cancelled = true; };
+  }, [jobId]);
+
+  // Log when results actually updates
+  useEffect(() => {
+    if (results !== null) console.log('results changed:', results);
+  }, [results]);
+
+  const goBack = useCallback(() => history.goBack(), [history]);
+  const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1).toLowerCase() : 'n/a');
+
+  if (loading || results === null) {
+    return (
+      <Dimmer active inverted>
+        <Loader size="big" inverted>Loading</Loader>
+      </Dimmer>
+    );
+  }
+
+  if (results.length === 0) {
+    return (
+      <Segment placeholder>
+        <Header>No job found</Header>
+        <Button onClick={goBack} color="grey">Previous Page</Button>
+      </Segment>
+    );
+  }
+
+  return (
+    <div>
+      <Segment inverted color="grey">
+        <Icon name="backward" size="large" onClick={goBack} />
+        <Button onClick={goBack} color="grey">Previous Page</Button>
+      </Segment>
+
+      {results.map((item, index) => (
+        <div key={index} className="JobDetail">
+          <Segment.Group raised>
+            <Header as="h3" attached="top" block>Contractor</Header>
+            <Segment attached color="blue">
+              Name: {cap(item?.contractor?.conFirstName)} {cap(item?.contractor?.conLastName)}
+            </Segment>
+            <Segment attached>ID: {item?.contractor?.conLicense || 'n/a'}</Segment>
+          </Segment.Group>
+
+          <Segment.Group raised>
+            <Header as="h3" attached="top" block>Owner</Header>
+            <Segment attached color="blue">
+              Owner Name: {item?.owner?.ownFirstName || 'n/a'} {item?.owner?.ownLastName || 'n/a'}
+            </Segment>
+            <Segment attached>Business Name: {item?.owner?.ownBusinessName || 'n/a'}</Segment>
+            <Segment attached>Owner Type: {item?.owner?.ownType || 'n/a'}</Segment>
+          </Segment.Group>
+
+          <Segment.Group raised>
+            <Header as="h3" attached="top" block>Property</Header>
+            <Segment attached color="blue">Address: {item?.property?.address || 'n/a'}</Segment>
+            <Segment attached>City: {item?.property?.city || 'n/a'}</Segment>
+            <Segment attached>Borough: {item?.property?.borough || 'n/a'}</Segment>
+            <Segment attached>Property Type: {item?.property?.propType || 'n/a'}</Segment>
+            <Segment attached>Property Description: {item?.property?.jobDescr || 'n/a'}</Segment>
+          </Segment.Group>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Job_Detail;
