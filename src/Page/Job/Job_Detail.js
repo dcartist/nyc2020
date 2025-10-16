@@ -23,13 +23,13 @@ class Job_Detail extends Component {
         this.props.history.goBack();
     }
 	render() {
-		if (this.state.results.length !== 0) {
+		if (this.state.results.length !== 0 && this.state.results[0].contractor && this.state.results[0].owner && this.state.results[0].property) {
 			return (
 				<div>
                     <Segment inverted color='grey'> <Icon name="backward" size="large"onClick={this.goBack}></Icon> 
                         <Button onClick={this.goBack} color='grey'>Previous Page</Button></Segment>
-                    
-					{this.state.results.map((item, index) => (
+
+					{ this.state.results.length !== 0 && this.state.results.map((item, index) => (
 						<div key={index} className="JobDetail">
 
                             <Segment.Group raised>
@@ -37,7 +37,7 @@ class Job_Detail extends Component {
 								Contractor
 							</Header>
 							<Segment attached color='blue'>
-								Name: {item.contractor.conFirstName.charAt(0).toUpperCase()+item.contractor.conFirstName.slice(1).toLowerCase()} {item.contractor.conLastName.charAt(0).toUpperCase()+item.contractor.conLastName.slice(1).toLowerCase()}
+								Name: {item.contractor.conFirstName ?? item.contractor.conFirstName.charAt(0).toUpperCase()+item.contractor.conFirstName.slice(1).toLowerCase()} {item.contractor.conLastName.charAt(0).toUpperCase()+item.contractor.conLastName.slice(1).toLowerCase() || 'n/a'}
 							</Segment>
 							<Segment attached>ID: {item.contractor.conLicense}</Segment>
                             </Segment.Group>
