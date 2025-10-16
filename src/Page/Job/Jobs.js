@@ -13,8 +13,7 @@ class Jobs extends Component {
 		};
 	}
 	componentDidMount() {
-		// const url = `http://localhost:8080/api/property`;
-		// console.log(url);
+
 		const url = `https://whispering-bayou-30290.herokuapp.com/api/property`;
 		axios.get(url).then((results) => {
 			let arrayUniqueByKey = [...new Map(results.data.map((item) => [item['borough'], item])).values()];
