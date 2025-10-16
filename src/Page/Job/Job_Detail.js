@@ -15,7 +15,7 @@ const Job_Detail = () => {
 
     const fetchData = async () => {
       try {
-        const url = `http://localhost:8080/api/job/id/${jobId}`;
+        const url = `http://whispering-bayou-30290.herokuapp.com/api/job/id/${jobId}`;
         const res = await axios.get(url);
         if (cancelled) return;
         const data = res?.data;
