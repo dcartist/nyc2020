@@ -11,7 +11,9 @@ class Job_Detail extends Component {
 		};
 	}
 	componentDidMount() {
-		const url = `https://whispering-bayou-30290.herokuapp.com/api/job/id/` + this.props.match.params.jobId;
+		const url = `http://localhost:8080/api/job/id/` + this.props.match.params.jobId;
+		console.log(url);
+		// const url = `https://whispering-bayou-30290.herokuapp.com/api/job/id/` + this.props.match.params.jobId;
 		axios.get(url).then((results) => {
 			this.setState({ results: results.data });
 			console.log(results.data);
@@ -57,7 +59,7 @@ class Job_Detail extends Component {
 							<Segment attached>Borough: {item.property.borough}</Segment>
 							<Segment attached>Property Type: {item.property.propType}</Segment>
 							<Segment attached>Property Description: {item.property.jobDescr}</Segment>
-                            <Segment><Map newLocation={item.property.address} className="Map" /></Segment>
+                            {/* <Segment><Map newLocation={item.property.address} className="Map" /></Segment> */}
                             </Segment.Group>
 							
 						</div>
